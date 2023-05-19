@@ -1,73 +1,41 @@
 #include "shell.h"
 
-/**
- * free_data - frees data structure
- *
- * @datash: data structure
- * Return: no return
- */
-void free_data(data_shell *datash)
+int main(int argc, char *argv[])
 {
-	unsigned int i;
+	char *buffer = NULL;
+	char *args[100];
+	size_t n;
+	ssize_t read_stdin;
+	pid_t pid;
+	int status;
 
-	for (i = 0; datash->_environ[i]; i++)
+	if (argc > 2)
+		return (0);
+	while (1)
 	{
-		free(datash->_environ[i]);
+		printf("#cisfun$ ");
+		fflush(stdin);
+		read_stdin = getline(&buffer, &n, stdin);
+		if (read_stdin < 0)
+		{
+			printf("%s: No such file or directory\n", argv[0]);
+			continue;
+		}
+		status = simple_shell_no_args(buffer, args);
+		pid = fork();
+		if (pid < 0)
+		{
+			printf("%s: No such file or directory\n", argv[0]);
+		}
+		if (pid == 0)
+		{
+			if (status == 1)
+				execve(args[0], args, NULL);
+			printf("%s: No such file or directory\n", argv[0]);
+		}
+		else
+			wait(NULL);
 	}
-
-	free(datash->_environ);
-	free(datash->pid);
-}
-
-/**
- * set_data - Initialize data structure
- *
- * @datash: data structure
- * @av: argument vector
- * Return: no return
- */
-void set_data(data_shell *datash, char **av)
-{
-	unsigned int i;
-
-	datash->av = av;
-	datash->input = NULL;
-	datash->args = NULL;
-	datash->status = 0;
-	datash->counter = 1;
-
-	for (i = 0; environ[i]; i++)
-		;
-
-	datash->_environ = malloc(sizeof(char *) * (i + 1));
-
-	for (i = 0; environ[i]; i++)
-	{
-		datash->_environ[i] = _strdup(environ[i]);
-	}
-
-	datash->_environ[i] = NULL;
-	datash->pid = aux_itoa(getpid());
-}
-
-/**
- * main - Entry point
- *
- * @ac: argument count
- * @av: argument vector
- *
- * Return: 0 on success.
- */
-int main(int ac, char **av)
-{
-	data_shell datash;
-	(void) ac;
-
-	signal(SIGINT, get_sigint);
-	set_data(&datash, av);
-	shell_loop(&datash);
-	free_data(&datash);
-	if (datash.status < 0)
-		return (255);
-	return (datash.status);
+	free(buffer);
+	return (0);
 }

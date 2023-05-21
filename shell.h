@@ -9,6 +9,10 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <errno.h>
-int simple_shell_no_args(char cmd[], char *argv[]);
+#include <sys/stat.h>
+
+int simple_shell(char *args[]);
+char *simple_path(char *cmd);
+int line(char *buffer);
 
 #endif

@@ -39,5 +39,5 @@ int main(void)
 			perror("Error");
 		free(argv);
 	}
-	return status;
+	return (status);
 }

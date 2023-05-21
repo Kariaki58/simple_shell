@@ -1,7 +1,5 @@
 #include "shell.h"
 
-extern char **environ;
-
 int simple_shell(char *argv[])
 {
 	pid_t pid;

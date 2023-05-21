@@ -39,10 +39,10 @@ char *path(char *cmd)
 	char *copy;
 	char **array;
 	char *cat = NULL;
-	int i, len, j;
+	int i, len;
 
 	path = getenv("PATH");
-	i = 0, len = 0, j = 0;
+	i = 0, len = 0;
 	copy = malloc (1 + strlen(path));
 	if (!copy)
 	{

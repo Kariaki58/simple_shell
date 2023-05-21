@@ -5,12 +5,10 @@ int main(void)
 	char *buffer;
 	char **argv;
 	size_t n;
-	int i;
 	ssize_t buffer_size;
 	int status;
 
 	buffer = NULL;
-	i = 0;
 	buffer_size = 0;
 	status = 0;
 	while (1)

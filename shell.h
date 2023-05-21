@@ -16,6 +16,6 @@ char *path(char *cmd);
 char **token(char *string, char *dem);
 int simple_shell(char *argv[]);
 int line_(char *buffer);
-void vec();
+void vec(void);
 
 #endif

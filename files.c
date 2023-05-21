@@ -1,6 +1,5 @@
 #include "shell.h"
 
-extern char **environ;
 
 void vec(void)
 {

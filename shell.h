@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 
+extern char **environ;
 char **tok_str(char *string, char *del);
 char *path(char *cmd);
 char **token(char *string, char *dem);

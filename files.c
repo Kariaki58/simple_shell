@@ -27,7 +27,7 @@ char **token(char *string, char *dem)
                 path_token[i++] = ll;
                 ll = strtok(NULL, dem);
         }
-        return path_token;
+        return (path_token);
 }
 
 char *path(char *cmd)
@@ -65,7 +65,7 @@ char *path(char *cmd)
 	if (array[i] == NULL)
 	{
 		free(array);
-		return NULL;
+		return (NULL);
 	}
 	free(array);
 	return (cat);

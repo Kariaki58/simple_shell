@@ -9,25 +9,25 @@ void vec(void)
 		printf("%s\n", environ[i++]);
 }
 char **token(char *string, char *dem)
-{       
-        char *ll;
-        char **path_token;
-        int i;
+{
+	char *ll;
+	char **path_token;
+	int i;
 
-        i = 0;
-        ll = strtok(string, dem);
-        path_token = malloc(100 * sizeof(char*));
-        if (!path_token)
-        {
-                free(path_token);
-                return (NULL);
-        }
-        while (ll)
-        {
-                path_token[i++] = ll;
-                ll = strtok(NULL, dem);
-        }
-        return (path_token);
+	i = 0;
+	ll = strtok(string, dem);
+	path_token = malloc(100 * sizeof(char *));
+	if (!path_token)
+	{
+		free(path_token);
+		return (NULL);
+	}
+	while (ll)
+	{
+		path_token[i++] = ll;
+		ll = strtok(NULL, dem);
+	}
+	return (path_token);
 }
 
 char *path(char *cmd)
@@ -41,7 +41,7 @@ char *path(char *cmd)
 
 	path = getenv("PATH");
 	i = 0, len = 0;
-	copy = malloc (1 + strlen(path));
+	copy = malloc(1 + strlen(path));
 	if (!copy)
 	{
 		free(copy);

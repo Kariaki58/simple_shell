@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * simple_shell - simple shell function
+ * @argv: array of argument vector
+ * Return: Return status
+ */
 int simple_shell(char *argv[])
 {
 	pid_t pid;

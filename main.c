@@ -6,6 +6,7 @@
  * @datash: data structure
  * Return: no return
  */
+/*
 void free_data(data_shell *datash)
 {
 	unsigned int i;
@@ -18,7 +19,7 @@ void free_data(data_shell *datash)
 	free(datash->_environ);
 	free(datash->pid);
 }
-
+*/
 /**
  * set_data - Initialize data structure
  *
@@ -26,6 +27,7 @@ void free_data(data_shell *datash)
  * @av: argument vector
  * Return: no return
  */
+/*
 void set_data(data_shell *datash, char **av)
 {
 	unsigned int i;
@@ -49,12 +51,12 @@ void set_data(data_shell *datash, char **av)
 	datash->_environ[i] = NULL;
 	datash->pid = aux_itoa(getpid());
 }
-
+*/
 /**
  * execute - change to entry
+ * Return: status.
  */
-
-int execute(void)
+int execute(char *av)
 {
 	char *buffer;
 	char **argv;
@@ -89,9 +91,9 @@ int execute(void)
 		argv = token(buffer, " ");
 		argv[0] = path(argv[0]);
 		if (argv[0] != NULL)
-			status = simple_shell(argv);
+			status = simple_shell(argv, av);
 		else
-			perror("Error");
+			printf("%s: No such file or directory\n", av);
 		free(argv);
 	}
 	return (status);
@@ -107,14 +109,19 @@ int execute(void)
  */
 int main(int ac, char **av)
 {
-	data_shell datash;
-	(void) ac;
-
-	signal(SIGINT, get_sigint);
-	set_data(&datash, av);
-	shell_loop(&datash);
-	free_data(&datash);
-	if (datash.status < 0)
-		return (255);
-	return (datash.status);
+	/*
+	 * please do not remove this code thanks
+	 */
+	return (execute(av[ac - 1]));
+	/*
+	 * data_shell datash;
+	 * (void) ac;
+	 * signal(SIGINT, get_sigint);
+	 * set_data(&datash, av);
+	 * shell_loop(&datash);
+	 * free_data(&datash);
+	 * if (datash.status < 0)
+	 * return (255);
+	 * return (datash.status);
+	 */
 }

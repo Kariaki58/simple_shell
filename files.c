@@ -1,5 +1,8 @@
 #include "shell.h"
 
+/**
+ * vec - print the environ
+ */
 void vec(void)
 {
 	int i;
@@ -8,6 +11,13 @@ void vec(void)
 	while (environ[i])
 		printf("%s\n", environ[i++]);
 }
+
+/**
+ * token - create a string token
+ * @string: string input
+ * @dem: seperator
+ * Return: return the token of a string
+ */
 char **token(char *string, char *dem)
 {
 	char *ll;
@@ -30,6 +40,11 @@ char **token(char *string, char *dem)
 	return (path_token);
 }
 
+/**
+ * path - get's a string path
+ * @cmd: command input
+ * Return: path of a string
+ */
 char *path(char *cmd)
 {
 	struct stat df;
@@ -71,6 +86,11 @@ char *path(char *cmd)
 	return (cat);
 }
 
+/**
+ * line_ - check if line is empty
+ * @buffer: command line to check
+ * Return: is empty or not
+ */
 int line_(char *buffer)
 {
 	int i;

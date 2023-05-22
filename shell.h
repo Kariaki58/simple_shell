@@ -15,8 +15,8 @@ extern char **environ;
 char **tok_str(char *string, char *del);
 char *path(char *cmd);
 char **token(char *string, char *dem);
-int simple_shell(char *argv[]);
+int simple_shell(char *argv[], char *av);
 int line_(char *buffer);
 void vec(void);
-int execute(void);
+int execute(char *av);
 #endif

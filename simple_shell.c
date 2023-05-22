@@ -5,18 +5,18 @@
  * @argv: array of argument vector
  * Return: Return status
  */
-int simple_shell(char *argv[])
+int simple_shell(char *argv[], char *av)
 {
 	pid_t pid;
 	int status;
 
 	pid = fork();
 	if (pid < 0)
-		perror("Error");
+		printf("%s: No such file or directory", av);
 	if (pid == 0)
 	{
 		execve(argv[0], argv, environ);
-		perror("Error");
+		printf("%s: No such file or directory", av);
 	}
 	else
 	{

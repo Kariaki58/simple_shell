@@ -18,5 +18,5 @@ char **token(char *string, char *dem);
 int simple_shell(char *argv[]);
 int line_(char *buffer);
 void vec(void);
-
+int execute(void);
 #endif

@@ -1,6 +1,5 @@
 #include "shell.h"
 
-
 void vec(void)
 {
 	int i;

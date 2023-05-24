@@ -1,1 +1,0 @@
-Building simple shell project

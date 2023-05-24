@@ -16,7 +16,6 @@ int execute(char *av)
 	{
 		if (isatty(0))
 		{
-			fflush(stdin);
 			printf("$ ");
 		}
 		buffer_size = getline(&buffer, &n, stdin);

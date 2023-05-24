@@ -15,9 +15,7 @@ int execute(char *av)
 	while (1)
 	{
 		if (isatty(0))
-		{
 			printf("$ ");
-		}
 		buffer_size = getline(&buffer, &n, stdin);
 		if ((buffer_size == -1) || (strcmp("exit\n", buffer) == 0))
 		{
@@ -40,7 +38,7 @@ int execute(char *av)
 		if (argv[0] != NULL)
 			status = simple_shell(argv, av);
 		else
-			printf("%s: No such file or directory\n", av);
+			fprintf(stderr, "%s: No such file or directory\n", av);
 		free(argv);
 	}
 	return (status);

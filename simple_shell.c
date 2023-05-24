@@ -13,17 +13,19 @@ int simple_shell(char *argv[], char *av)
 
 	pid = fork();
 	if (pid < 0)
-		printf("%s: No such file or directory", av);
+		fprintf(stderr, "%s: No such file or directory\n", av);
 	if (pid == 0)
 	{
 		execve(argv[0], argv, environ);
-		printf("%s: No such file or directory", av);
+		fprintf(stderr, "%s: No such file or directory\n", av);
 	}
 	else
 	{
 		waitpid(pid, &status, 0);
 		if (WIFEXITED(status))
 			status = WEXITSTATUS(status);
+		if (status != 0)
+			fprintf(stderr, "%s: No such file or directory\n", av);
 	}
 	return (status);
 }

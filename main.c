@@ -4,13 +4,15 @@
 /**
  * show_prompt - display prompt to user
  */
-void show_prompt()
+void show_prompt(void)
 {
 	printf("$ ");
 }
 
 /**
  * main - entry point
+ * @ac: input
+ * @av: input 2
  * Return: return 0.
  */
 int main(int ac, char **av)

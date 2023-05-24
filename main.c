@@ -6,10 +6,8 @@
  */
 void grid_alloc(char **grid)
 {
-	int i;
-
-	for (i = 0; grid[i]; i++)
-		free(grid[i]);
+	if (!grid)
+		printf("yes\n");
 	free(grid);
 }
 

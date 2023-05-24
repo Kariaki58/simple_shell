@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <errno.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 extern char **environ;
 char **tok_str(char *string, char *del);
@@ -19,4 +20,6 @@ int simple_shell(char *argv[], char *av);
 int line_(char *buffer);
 void vec(void);
 int execute(char *av);
+void grid_alloc(char **grid);
+
 #endif

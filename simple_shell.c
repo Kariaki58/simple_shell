@@ -17,7 +17,8 @@ int simple_shell(char *argv[], char *av)
 	if (pid == 0)
 	{
 		execve(argv[0], argv, environ);
-		fprintf(stderr, "%s: No such file or directory\n", av);
+		perror("Error");
+		grid_alloc(argv);
 	}
 	else
 	{
@@ -25,7 +26,7 @@ int simple_shell(char *argv[], char *av)
 		if (WIFEXITED(status))
 			status = WEXITSTATUS(status);
 		if (status != 0)
-			fprintf(stderr, "%s: No such file or directory\n", av);
+			perror("Error");
 	}
 	return (status);
 }

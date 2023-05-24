@@ -1,13 +1,23 @@
 #include "shell.h"
 
 /**
+ * grid_alloc - free grid memory and grid
+ * @grid: heap array of grid
+ */
+
+void grid_alloc(char **grid)
+{
+	free(grid);
+}
+
+/**
  * execute - change to entry
  * @av: av
  * Return: status.
  */
 int execute(char *av)
 {
-	char *buffer = NULL,  **argv;
+	char *buffer = NULL,  **argv, *prompt = "$ ";
 	size_t n;
 	ssize_t buffer_size = 0;
 	int status = 0;
@@ -15,11 +25,10 @@ int execute(char *av)
 	while (1)
 	{
 		if (isatty(0))
-			printf("$ ");
+			write(STDIN_FILENO, prompt, 2);
 		buffer_size = getline(&buffer, &n, stdin);
 		if ((buffer_size == -1) || (strcmp("exit\n", buffer) == 0))
 		{
-			free(buffer);
 			break;
 		}
 		buffer[buffer_size - 1] = '\0';
@@ -38,9 +47,13 @@ int execute(char *av)
 		if (argv[0] != NULL)
 			status = simple_shell(argv, av);
 		else
-			fprintf(stderr, "%s: No such file or directory\n", av);
-		free(argv);
+		{
+			perror("Error");
+			continue;
+		}
 	}
+	free(buffer);
+	grid_alloc(argv);
 	return (status);
 }
 
@@ -54,19 +67,5 @@ int execute(char *av)
  */
 int main(int ac, char **av)
 {
-	/*
-	 * please do not remove this code thanks
-	 */
 	return (execute(av[ac - 1]));
-	/*
-	 * data_shell datash;
-	 * (void) ac;
-	 * signal(SIGINT, get_sigint);
-	 * set_data(&datash, av);
-	 * shell_loop(&datash);
-	 * free_data(&datash);
-	 * if (datash.status < 0)
-	 * return (255);
-	 * return (datash.status);
-	 */
 }

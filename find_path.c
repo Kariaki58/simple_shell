@@ -43,15 +43,26 @@ char *find_path(char *buffer)
 	if (stat(buffer, &st) == 0)
 		return (buffer);
 	cpp = malloc(strlen(bring) + 1);
-	cpp = strcpy(cpp, bring);
+	strcpy(cpp, bring);
 	token = str_token(cpp);
 	while (token[i])
 	{
 		len = strlen(token[i]) - 1;
 
 		if (token[i][len] != '/')
-			merge = strcat(token[i], "/");
-		merge = strcat(token[i], buffer);
+		{
+			merge = malloc(strlen(token[i]) + 2);
+			strcpy(merge, token[i]);
+			strcat(merge, "/");
+		}
+		else
+		{
+			merge = malloc(strlen(token[i]) + 1);
+			strcpy(merge, token[i]);
+		}
+		strcat(merge, buffer);
+		
+		/*merge = strcat(token[i], buffer);*/
 		if (stat(merge, &st) == 0)
 			break;
 		i++;
@@ -60,6 +71,7 @@ char *find_path(char *buffer)
 	if (token[i] == NULL)
 	{
 		free(token);
+		free(merge);
 		return (NULL);
 	}
 	free(token);

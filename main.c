@@ -54,17 +54,26 @@ int main(int ac, char **av)
 	size_t n = 0;
 	ssize_t readline = 0;
 	char **args;
-	int status;
+	int status, count = 0;
 	char *prompt = "$ ";
 
 	while (1)
 	{
+		count++;
 		if (isatty(0))
 			write(STDOUT_FILENO, prompt, 2);
 		readline = getline(&buffer, &n, stdin);
 		if (readline == -1 || strcmp("exit\n", buffer) == 0)
 		{
-			free(buffer);
+			if (count < 2)
+			{
+				free(buffer);
+			}
+			else
+			{
+				free(buffer);
+				free(args);
+			}
 			break;
 		}
 		buffer[readline - 1] = '\0';

@@ -10,19 +10,21 @@ char **str_token(char *cpp)
 	char *ll;
 	char **tokenised;
 	int i = 0;
+	int max_tokens = 100;
 
 	ll = strtok(cpp, ":");
-	tokenised = (char **)malloc(sizeof(char *) * 100);
+	tokenised = (char **)malloc(sizeof(char *) * max_tokens);
 	if (!tokenised)
 	{
-		free(tokenised);
 		return (NULL);
 	}
-	while (ll)
+	while (ll && i < max_tokens - 1)
 	{
-		tokenised[i++] = ll;
+		tokenised[i++] = strdup(ll);
 		ll = strtok(NULL, ":");
+		i++;
 	}
+	tokenised[i] = NULL;
 	return (tokenised);
 }
 

@@ -12,7 +12,6 @@
 extern char **environ;
 void simple_shell(char *av);
 char **token_array(char *buffer);
-int execute(char **pointer, char *av);
 int check_line(char *buffer);
 void environment(void);
 char *my_getenv(char *environ_x);

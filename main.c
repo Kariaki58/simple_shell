@@ -17,7 +17,7 @@ int main(int ac, char **av)
 {
 	char buffer[BUFFER];
 	char *args[2];
-	int status;
+	int status_x;
 	pid_t pid;
 
 	while (1)
@@ -42,7 +42,7 @@ int main(int ac, char **av)
 		}
 		else
 		{
-			wait(&status);
+			wait(&status_x);
 		}
 	}
 }

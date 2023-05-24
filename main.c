@@ -32,7 +32,7 @@ int execute(char *av)
 		buffer_size = getline(&buffer, &n, stdin);
 		if ((buffer_size == -1) || (strcmp("exit\n", buffer) == 0))
 		{
-			free(buffer);	
+			free(buffer);
 			break;
 		}
 		buffer[buffer_size - 1] = '\0';

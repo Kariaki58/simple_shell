@@ -82,7 +82,7 @@ int main(int ac, char **av)
 		remove_spaces(buffer);
 		if (strcmp(buffer, "exit") == 0)
 		{
-			exit(98);
+			exit(0);
 			break;
 		}
 		if (strcmp(buffer, "env") == 0)

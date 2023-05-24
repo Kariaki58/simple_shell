@@ -58,7 +58,15 @@ int main(int ac, char **av)
 		str_tok(buffer, args);
 		remove_spaces(buffer);
 		if (strcmp(buffer, "exit") == 0)
+		{
+			exit(98);
 			break;
+		}
+		if (strcmp(buffer, "env") == 0)
+		{
+			vec();
+			continue;
+		}
 		pid = fork();
 		if (pid < 0)
 		{

@@ -55,6 +55,8 @@ int main(int ac, char **av)
 			break;
 		buffer[strcspn(buffer, "\n")] = '\0';
 		str_tok(buffer, args);
+		if (strcmp(buffer, "exit") == 0)
+			break;
 		pid = fork();
 		if (pid < 0)
 		{

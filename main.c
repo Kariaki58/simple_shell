@@ -7,19 +7,18 @@
  */
 int execute(char *av)
 {
-	char *buffer;
-	char **argv;
+	char *buffer = NULL,  **argv;
 	size_t n;
-	ssize_t buffer_size;
-	int status;
+	ssize_t buffer_size = 0;
+	int status = 0;
 
-	buffer_size = 0;
-	status = 0;
-	buffer = NULL;
 	while (1)
 	{
-		fflush(stdin);
-		printf("$ ");
+		if (isatty(0))
+		{
+			fflush(stdin);
+			printf("$ ");
+		}
 		buffer_size = getline(&buffer, &n, stdin);
 		if ((buffer_size == -1) || (strcmp("exit\n", buffer) == 0))
 		{

@@ -18,4 +18,5 @@ char *my_getenv(char *environ_x);
 char *find_path(char *buffer);
 void show_prompt(void);
 void str_tok(char *buffer, char *array[]);
+void remove_spaces(char* state);
 #endif

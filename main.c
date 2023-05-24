@@ -34,6 +34,7 @@ void str_tok(char *buffer, char *array[])
 	}
 	array[j] = NULL;
 }
+
 /**
  * main - entry point
  * @ac: input
@@ -55,6 +56,7 @@ int main(int ac, char **av)
 			break;
 		buffer[strcspn(buffer, "\n")] = '\0';
 		str_tok(buffer, args);
+		remove_spaces(buffer);
 		if (strcmp(buffer, "exit") == 0)
 			break;
 		pid = fork();

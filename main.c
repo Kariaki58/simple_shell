@@ -45,4 +45,5 @@ int main(int ac, char **av)
 			wait(&status_x);
 		}
 	}
+	return (0);
 }

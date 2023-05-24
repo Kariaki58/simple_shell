@@ -16,6 +16,6 @@ int check_line(char *buffer);
 void environment(void);
 char *my_getenv(char *environ_x);
 char *find_path(char *buffer);
-char **str_tok(char *str);
 void show_prompt();
+void str_tok(char *buffer, char *array[]);
 #endif

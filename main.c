@@ -10,6 +10,31 @@ void show_prompt(void)
 }
 
 /**
+ * str_tok - string token
+ * @buffer: buffer of string
+ * @array: array of strings
+ */
+void str_tok(char *buffer, char *array[])
+{
+	char *token;
+	char *arr[100];
+	int i = 0, j;
+
+	if (!buffer)
+		return;
+	token = strtok(buffer, " \n");
+	while (token)
+	{
+		arr[i++] = token;
+		token = strtok(NULL, " \n");
+	}
+	for (j = 0; j < i; j++)
+	{
+		array[j] = arr[j];
+	}
+	array[j] = NULL;
+}
+/**
  * main - entry point
  * @ac: input
  * @av: input 2
@@ -18,7 +43,7 @@ void show_prompt(void)
 int main(int ac, char **av)
 {
 	char buffer[BUFFER];
-	char *args[2];
+	char *args[100];
 	int status_x;
 	pid_t pid;
 
@@ -29,8 +54,7 @@ int main(int ac, char **av)
 		if (fgets(buffer, BUFFER, stdin) == NULL)
 			break;
 		buffer[strcspn(buffer, "\n")] = '\0';
-		args[0] = buffer;
-		args[1] = NULL;
+		str_tok(buffer, args);
 		pid = fork();
 		if (pid < 0)
 		{

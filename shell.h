@@ -21,5 +21,4 @@ int line_(char *buffer);
 void vec(void);
 int execute(char *av);
 void grid_alloc(char **grid);
-
 #endif

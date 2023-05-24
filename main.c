@@ -4,7 +4,6 @@
  * grid_alloc - free grid memory and grid
  * @grid: heap array of grid
  */
-
 void grid_alloc(char **grid)
 {
 	free(grid);

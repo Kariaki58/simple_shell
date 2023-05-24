@@ -28,5 +28,6 @@ int simple_shell(char *argv[], char *av)
 		if (status != 0)
 			perror("Error");
 	}
+
 	return (status);
 }

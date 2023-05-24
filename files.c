@@ -91,6 +91,7 @@ char *path(char *cmd)
  * @buffer: command line to check
  * Return: is empty or not
  */
+
 int line_(char *buffer)
 {
 	int i;

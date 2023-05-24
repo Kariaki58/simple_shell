@@ -4,7 +4,7 @@
  * remove_spaces - remove space in buffer
  * @state: state of string
  */
-void remove_spaces(char* state)
+void remove_spaces(char *state)
 {
 	int len, i, j = 0;
 

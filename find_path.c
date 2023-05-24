@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * str_token - tokenised a string
+ * @cpp: char cpp copy
+ * Return: tokenised a string
+ */
 char **str_token(char *cpp)
 {
 	char *ll;
@@ -21,6 +26,11 @@ char **str_token(char *cpp)
 	return (tokenised);
 }
 
+/**
+ * find_path - find the path in getenv
+ * @buffer: input buffer.
+ * Return: return merge.
+ */
 char *find_path(char *buffer)
 {
 	char *bring = my_getenv("PATH");
@@ -47,7 +57,7 @@ char *find_path(char *buffer)
 		i++;
 	}
 	free(cpp);
-	if(token[i] == NULL)
+	if (token[i] == NULL)
 	{
 		free(token);
 		return (NULL);

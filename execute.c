@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * execute - execute
+ * @args: prints args
+ * @av: input av.
+ * Return: return status.
+ */
 int execute(char **args, char *av)
 {
 	pid_t pid;

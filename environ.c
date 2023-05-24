@@ -1,5 +1,8 @@
 #include "shell.h"
 
+/**
+ * environment - get the environment
+ */
 void environment(void)
 {
 	int i;
@@ -9,6 +12,11 @@ void environment(void)
 		printf("%s\n", environ[i++]);
 }
 
+/**
+ * my_getenv - get environment
+ * @environ_x: input env
+ * Return: return my_get.
+ */
 char *my_getenv(char *environ_x)
 {
 	int i = 0, j, status;

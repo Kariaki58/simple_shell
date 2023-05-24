@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * check_line - check if line is empty
+ * @buffer: input buffer
+ * Return: return int
+ */
 int check_line(char *buffer)
 {
 	int i;
@@ -13,6 +18,12 @@ int check_line(char *buffer)
 	}
 	return (1);
 }
+
+/**
+ * token_array - get array from buffer
+ * @buffer: input bbuffer
+ * Return: return path
+ */
 char **token_array(char *buffer)
 {
 	char **path;
@@ -21,7 +32,7 @@ char **token_array(char *buffer)
 
 	path = (char **)malloc(sizeof(char *) * 100);
 	if (!path)
-		return NULL;
+		return (NULL);
 	ll = strtok(buffer, " ");
 	while (ll)
 	{
@@ -31,6 +42,12 @@ char **token_array(char *buffer)
 	return (path);
 }
 
+/**
+ * main - entry point
+ * @ac: ac
+ * @av: av
+ * Return: status
+ */
 int main(int ac, char **av)
 {
 	char *buffer = NULL;
@@ -38,7 +55,7 @@ int main(int ac, char **av)
 	ssize_t readline = 0;
 	char **args;
 	int status;
-	
+
 	while (1)
 	{
 		if (isatty(0))

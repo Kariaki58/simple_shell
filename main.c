@@ -36,6 +36,32 @@ void str_tok(char *buffer, char *array[])
 }
 
 /**
+ * execute - execute function
+ * @state: input
+ * @paras: input 2
+ */
+void execute(char *state, char *paras[])
+{
+	int status;
+	pid_t pid;
+
+	pid = fork();
+	if (pid < 0)
+	{
+		perror(state);
+		exit(EXIT_FAILURE);
+	}
+	else if (pid == 0)
+	{
+		execve(paras[0], paras, environ);
+		perror(state);
+		exit(EXIT_FAILURE);
+	}
+	else
+		wait(&status);
+}
+
+/**
  * main - entry point
  * @ac: input
  * @av: input 2
@@ -43,10 +69,7 @@ void str_tok(char *buffer, char *array[])
  */
 int main(int ac, char **av)
 {
-	char buffer[BUFFER];
-	char *args[100];
-	int status_x;
-	pid_t pid;
+	char buffer[BUFFER], *args[100];
 
 	while (1)
 	{
@@ -67,22 +90,7 @@ int main(int ac, char **av)
 			vec();
 			continue;
 		}
-		pid = fork();
-		if (pid < 0)
-		{
-			perror(av[ac - 1]);
-			exit(EXIT_FAILURE);
-		}
-		else if (pid == 0)
-		{
-			execve(args[0], args, NULL);
-			perror(av[ac - 1]);
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			wait(&status_x);
-		}
+		execute(av[ac - 1], args);
 	}
 	return (0);
 }

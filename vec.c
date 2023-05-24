@@ -1,5 +1,8 @@
 #include "shell.h"
 
+/**
+ * vec - print environment
+ */
 void vec(void)
 {
 	int i;

@@ -3,6 +3,7 @@
 /**
  * simple_shell - simple shell function
  * @argv: array of argument vector
+ * @av: av
  * Return: Return status
  */
 int simple_shell(char *argv[], char *av)

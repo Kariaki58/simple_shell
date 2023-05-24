@@ -49,9 +49,10 @@ char *path(char *cmd)
 {
 	struct stat df;
 	char *path;
-	char *copy;
+	char *copy, *check = "/";
 	char **array;
 	char *cat = NULL;
+	char ch = '/';
 	int i, len;
 
 	path = getenv("PATH");
@@ -68,9 +69,9 @@ char *path(char *cmd)
 	array = token(copy, ":");
 	while (array[i])
 	{
-		len = strlen(array[i]);
-		if (array[i][len - 1] != '/')
-			cat = strcat(array[i], "/");
+		len = strlen(array[i]) - 1;
+		if (array[i][len] != ch)
+			cat = strcat(array[i], check);
 		cat = strcat(array[i], cmd);
 		if (stat(cat, &df) == 0)
 			break;

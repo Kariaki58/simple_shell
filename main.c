@@ -6,6 +6,10 @@
  */
 void grid_alloc(char **grid)
 {
+	int i;
+
+	for (i = 0; grid[i]; i++)
+		free(grid[i]);
 	free(grid);
 }
 
@@ -28,12 +32,14 @@ int execute(char *av)
 		buffer_size = getline(&buffer, &n, stdin);
 		if ((buffer_size == -1) || (strcmp("exit\n", buffer) == 0))
 		{
+			free(buffer);	
 			break;
 		}
 		buffer[buffer_size - 1] = '\0';
 		if (line_(buffer) == 1)
 		{
 			status = 0;
+			perror(av);
 			continue;
 		}
 		if (strcmp("env", buffer) == 0)
@@ -47,12 +53,10 @@ int execute(char *av)
 			status = simple_shell(argv, av);
 		else
 		{
-			perror("Error");
+			perror(av);
 			continue;
 		}
 	}
-	free(buffer);
-	grid_alloc(argv);
 	return (status);
 }
 

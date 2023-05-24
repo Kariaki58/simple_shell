@@ -33,10 +33,7 @@ char **str_token(char *cpp)
  */
 char *find_path(char *buffer)
 {
-	char *bring = my_getenv("PATH");
-	char **token;
-	char *merge = NULL;
-	char *cpp;
+	char *bring = my_getenv("PATH"), **token, *merge = NULL, *cpp;
 	int i = 0, len = 0;
 	struct stat st;
 
@@ -48,7 +45,6 @@ char *find_path(char *buffer)
 	while (token[i])
 	{
 		len = strlen(token[i]) - 1;
-
 		if (token[i][len] != '/')
 		{
 			merge = malloc(strlen(token[i]) + 2);

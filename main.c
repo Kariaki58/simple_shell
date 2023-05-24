@@ -85,7 +85,7 @@ int main(int ac, char **av)
 		}
 		else
 			perror(av[ac - 1]);
-		free(args);
 	}
+	free(args);
 	return (status);
 }

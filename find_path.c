@@ -57,8 +57,6 @@ char *find_path(char *buffer)
 			strcpy(merge, token[i]);
 		}
 		strcat(merge, buffer);
-		
-		/*merge = strcat(token[i], buffer);*/
 		if (stat(merge, &st) == 0)
 			break;
 		i++;

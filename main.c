@@ -24,7 +24,8 @@ int main(int ac, char **av)
 
 	while (1)
 	{
-		show_prompt();
+		if (isatty(0))
+			show_prompt();
 		if (fgets(buffer, BUFFER, stdin) == NULL)
 			break;
 		buffer[strcspn(buffer, "\n")] = '\0';

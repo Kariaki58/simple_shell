@@ -55,11 +55,12 @@ int main(int ac, char **av)
 	ssize_t readline = 0;
 	char **args;
 	int status;
+	char *prompt = "$ ";
 
 	while (1)
 	{
 		if (isatty(0))
-			printf("$ ");
+			write(STDOUT_FILENO, prompt, 2);
 		readline = getline(&buffer, &n, stdin);
 		if (readline == -1 || strcmp("exit\n", buffer) == 0)
 		{

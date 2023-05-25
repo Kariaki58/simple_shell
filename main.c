@@ -78,7 +78,7 @@ int main(void)
 		remove_spaces(args[0]);
 		if (strcmp(args[0], "exit") == 0)
 		{
-			exit(0);
+			exit(98);
 			break;
 		}
 		if (strcmp(args[0], "env") == 0)

@@ -61,8 +61,6 @@ void execute(char *paras[])
 
 /**
  * main - entry point
- * @ac: input
- * @av: input 2
  * Return: return 0.
  */
 int main(void)

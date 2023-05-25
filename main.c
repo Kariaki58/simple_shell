@@ -47,13 +47,13 @@ void execute(char *paras[])
 	if (pid < 0)
 	{
 		perror(__progname);
-		exit(0);
+		_exit2();
 	}
 	else if (pid == 0)
 	{
 		execve(paras[0], paras, environ);
 		perror(__progname);
-		exit(0);
+		_exit2();
 	}
 	else
 		waitpid(pid, NULL, 0);
@@ -86,7 +86,7 @@ int main(void)
 		if (strcmp(args[0], "exit") == 0)
 		{
 			free(buffer);
-			break;
+			_exit2();
 		}
 		if (strcmp(args[0], "env") == 0)
 		{

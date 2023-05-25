@@ -21,5 +21,6 @@ void show_prompt(void);
 void execute(char *paras[]);
 void str_tok(char *buffer, char *array[]);
 void remove_spaces(char *state);
+void _exit2(void);
 void vec(void);
 #endif

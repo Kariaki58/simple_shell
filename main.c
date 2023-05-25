@@ -42,7 +42,13 @@ void str_tok(char *buffer, char *array[])
 void execute(char *paras[])
 {
 	pid_t pid;
+	struct stat st;
 
+	if (stat(paras[0], &st) != 0)
+	{
+		perror(__progname);
+		return;
+	}
 	pid = fork();
 	if (pid < 0)
 	{

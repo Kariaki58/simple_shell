@@ -79,7 +79,7 @@ int main(void)
 	{
 		if (isatty(0))
 			show_prompt();
-		if (my_getline(&buffer, &n, stdin) == -1)
+		if (getline(&buffer, &n, stdin) == -1)
 		{
 			free(buffer);
 			break;

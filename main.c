@@ -42,7 +42,7 @@ void str_tok(char *buffer, char *array[])
 void execute(char *paras[])
 {
 	pid_t pid;
-	
+
 	pid = fork();
 	if (pid < 0)
 	{

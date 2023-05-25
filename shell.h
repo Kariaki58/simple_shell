@@ -23,4 +23,5 @@ void str_tok(char *buffer, char *array[]);
 void remove_spaces(char *state);
 ssize_t my_getline(char **linept, size_t *n, FILE *ss);
 void vec(void);
+void my_exit(char *buff, char *num);
 #endif

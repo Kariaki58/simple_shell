@@ -92,7 +92,7 @@ int main(void)
 		if (strcmp(args[0], "exit") == 0)
 		{
 			free(buffer);
-			break;
+			exit(2);
 		}
 		if (strcmp(args[0], "env") == 0)
 		{

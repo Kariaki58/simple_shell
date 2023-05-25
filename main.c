@@ -42,7 +42,7 @@ void str_tok(char *buffer, char *array[])
 void execute(char *paras[])
 {
 	pid_t pid;
-
+	
 	pid = fork();
 	if (pid < 0)
 	{
@@ -66,6 +66,7 @@ void execute(char *paras[])
 int main(void)
 {
 	char buffer[BUFFER], *args[100];
+	char cmd[] = "/bin/ls";
 
 	while (1)
 	{
@@ -75,6 +76,8 @@ int main(void)
 			break;
 		buffer[strcspn(buffer, "\n")] = '\0';
 		str_tok(buffer, args);
+		if (strcmp(args[0], "ls") == 0)
+			args[0] = cmd;
 		remove_spaces(args[0]);
 		if (strcmp(args[0], "exit") == 0)
 		{

@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * vec - print environment
+ * vec - it prints environment
  */
 void vec(void)
 {

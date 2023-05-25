@@ -2,7 +2,7 @@
 #define BUFFER 1024
 
 /**
- * show_prompt - display prompt to user
+ * show_prompt - it displays prompt to user
  */
 void show_prompt(void)
 {
@@ -11,8 +11,8 @@ void show_prompt(void)
 
 /**
  * str_tok - string token
- * @buffer: buffer of string
- * @array: array of strings
+ * @buffer: its buffer of astring
+ * @array: array to string
  */
 void str_tok(char *buffer, char *array[])
 {
@@ -36,8 +36,8 @@ void str_tok(char *buffer, char *array[])
 }
 
 /**
- * execute - execute function
- * @paras: input 2
+ * execute - it executes the function
+ * @paras: input array
  */
 void execute(char *paras[])
 {

@@ -65,22 +65,27 @@ void execute(char *paras[])
  */
 int main(void)
 {
-	char buffer[BUFFER], *args[100];
+	char *buffer = NULL, *args[100];
 	char cmd[] = "/bin/ls";
+	size_t n;
 
 	while (1)
 	{
 		if (isatty(0))
 			show_prompt();
-		if (fgets(buffer, BUFFER, stdin) == NULL)
+		if (getline(&buffer, &n, stdin) == -1)
+		{
+			free(buffer);
 			break;
-		buffer[strcspn(buffer, "\n")] = '\0';
+		}
+		buffer[strlen(buffer)] = '\0';
 		str_tok(buffer, args);
 		if (strcmp(args[0], "ls") == 0)
 			args[0] = cmd;
 		remove_spaces(args[0]);
 		if (strcmp(args[0], "exit") == 0)
 		{
+			free(buffer);
 			break;
 		}
 		if (strcmp(args[0], "env") == 0)

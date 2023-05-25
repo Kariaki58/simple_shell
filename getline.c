@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * my_getline - getline function instead of getline inbuilt
+ * @lineptr: input
+ * @n: input 2
+ * @ss: input 3
+ * Return: number
+ */
 ssize_t my_getline(char **lineptr, size_t *n, FILE *ss)
 {
 	size_t position = 0;

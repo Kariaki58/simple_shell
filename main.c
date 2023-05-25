@@ -47,13 +47,13 @@ void execute(char *paras[])
 	if (pid < 0)
 	{
 		perror(__progname);
-		exit(EXIT_FAILURE);
+		exit(98);
 	}
 	else if (pid == 0)
 	{
 		execve(paras[0], paras, environ);
 		perror(__progname);
-		exit(EXIT_FAILURE);
+		exit(98);
 	}
 	else
 		waitpid(pid, NULL, 0);

@@ -37,7 +37,6 @@ void str_tok(char *buffer, char *array[])
 
 /**
  * execute - execute function
- * @state: input
  * @paras: input 2
  */
 void execute(char *paras[])

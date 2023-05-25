@@ -58,7 +58,7 @@ void execute(char *state, char *paras[])
 		exit(EXIT_FAILURE);
 	}
 	else
-		wait(&status);
+		waitpid(pid, NULL, 0);
 }
 
 /**
@@ -79,8 +79,8 @@ int main(int ac, char **av)
 			break;
 		buffer[strcspn(buffer, "\n")] = '\0';
 		str_tok(buffer, args);
-		remove_spaces(buffer);
-		if (strcmp(buffer, "exit") == 0)
+		remove_spaces(args[0]);
+		if (strcmp(args[0], "exit") == 0)
 		{
 			exit(0);
 			break;

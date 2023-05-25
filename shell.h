@@ -21,5 +21,6 @@ void show_prompt(void);
 void execute(char *paras[]);
 void str_tok(char *buffer, char *array[]);
 void remove_spaces(char *state);
+ssize_t my_getline(char **linept, size_t *n, FILE *ss);
 void vec(void);
 #endif

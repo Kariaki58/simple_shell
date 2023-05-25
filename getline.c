@@ -4,6 +4,8 @@ ssize_t my_getline(char **lineptr, size_t *n, FILE *ss)
 {
 	size_t position = 0;
 	int ll;
+	size_t size;
+	char *ptr;
 
 	if (lineptr == NULL || n == NULL || ss == NULL)
 		return (-1);
@@ -22,14 +24,13 @@ ssize_t my_getline(char **lineptr, size_t *n, FILE *ss)
 		{
 			if (position == 0)
 				return (-1);
-			else
-				break;
+			break;
 		}
 		(*lineptr)[position++] = ll;
 		if (position > *n)
 		{
-			size_t size = *n + 128;
-			char *ptr = realloc(*lineptr, size);
+			size = *n + 128;
+			ptr = realloc(*lineptr, size);
 			if (ptr == NULL)
 				return (-1);
 			*lineptr = ptr;

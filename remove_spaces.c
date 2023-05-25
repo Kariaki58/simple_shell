@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * remove_spaces - remove space in buffer
- * @state: state of string
+ * remove_spaces - this removes space in buffer
+ * @state: a state of string
  */
 void remove_spaces(char *state)
 {

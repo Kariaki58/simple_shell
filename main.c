@@ -86,6 +86,8 @@ int main(void)
 		}
 		buffer[strlen(buffer)] = '\0';
 		str_tok(buffer, args);
+		if (strcmp(args[0], "cd") == 0)
+			printf("%s\n", buffer);
 		if (strcmp(args[0], "ls") == 0)
 			args[0] = cmd;
 		remove_spaces(args[0]);
